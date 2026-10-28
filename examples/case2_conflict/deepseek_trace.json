@@ -1,0 +1,107 @@
+[
+  {
+    "step": 1,
+    "action": {
+      "tool_name": "get_material_info",
+      "params": {
+        "material_id": "M02"
+      },
+      "reasoning": "必须先获取素材信息才能进行后续审核"
+    },
+    "result": {
+      "success": true,
+      "data": {
+        "id": "M02",
+        "title": "产品更新通知",
+        "type": "video",
+        "duration_minutes": 2,
+        "content_preview": "新版本功能介绍视频",
+        "created_at": "2026-10-27T14:00:00Z"
+      },
+      "error": null
+    }
+  },
+  {
+    "step": 2,
+    "action": {
+      "tool_name": "check_audit_rules",
+      "params": {
+        "material_info": {
+          "id": "M02",
+          "title": "产品更新通知",
+          "type": "video",
+          "duration_minutes": 2,
+          "content_preview": "新版本功能介绍视频",
+          "created_at": "2026-10-27T14:00:00Z"
+        },
+        "target_time": "2026-10-28T18:00:00"
+      },
+      "reasoning": "已获取素材信息，需检查审核规则与时段限制"
+    },
+    "result": {
+      "passed": true,
+      "risk_level": "low",
+      "reasons": [],
+      "allowed_times": [
+        "12:00",
+        "18:00",
+        "20:00",
+        "22:00"
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "action": {
+      "tool_name": "query_time_slot",
+      "params": {
+        "time_slot": "2026-10-28T18:00:00"
+      },
+      "reasoning": "审核通过，目标时段在允许列表，需先查询该时段可用性"
+    },
+    "result": {
+      "available": false,
+      "occupied_by": "M99",
+      "time": "2026-10-28T18:00:00"
+    }
+  },
+  {
+    "step": 4,
+    "action": {
+      "tool_name": "find_alternative_slots",
+      "params": {
+        "after_time": "2026-10-28T18:00:00",
+        "count": 3,
+        "allowed_times": [
+          "12:00",
+          "18:00",
+          "20:00",
+          "22:00"
+        ]
+      },
+      "reasoning": "原时段被占用，需在允许时段内查找合规替代方案"
+    },
+    "result": {
+      "success": true,
+      "slots": [
+        "2026-10-28T22:00:00"
+      ],
+      "nearest_available": "2026-10-28T22:00:00"
+    }
+  },
+  {
+    "step": 5,
+    "action": {
+      "tool_name": "FINISH",
+      "params": {
+        "final_status": "pending_user_confirmation",
+        "reason": "原定时段 2026-10-28T18:00:00 被 M99 占用，合规替代时段为 2026-10-28T22:00:00，需用户确认后方可保存草稿"
+      },
+      "reasoning": "替代时段需用户确认，不可擅自保存"
+    },
+    "result": {
+      "final_status": "pending_user_confirmation",
+      "reason": "原定时段 2026-10-28T18:00:00 被 M99 占用，合规替代时段为 2026-10-28T22:00:00，需用户确认后方可保存草稿"
+    }
+  }
+]

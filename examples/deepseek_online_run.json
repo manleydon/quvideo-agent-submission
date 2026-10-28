@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-10-28",
+  "provider": "DeepSeek",
+  "api_mode": "OpenAI-compatible",
+  "base_url": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "results": [
+    {
+      "case": "case1_normal",
+      "status": "success",
+      "draft_saved": true,
+      "trace_steps": 6,
+      "output": "case1_normal/deepseek_output.json",
+      "trace": "case1_normal/deepseek_trace.json"
+    },
+    {
+      "case": "case2_conflict",
+      "status": "needs_confirmation",
+      "suggested_time": "2026-10-28T22:00:00",
+      "draft_saved": false,
+      "trace_steps": 5,
+      "output": "case2_conflict/deepseek_output.json",
+      "trace": "case2_conflict/deepseek_trace.json"
+    }
+  ],
+  "notes": [
+    "The API key is not stored in this repository.",
+    "The conflict path only suggests an alternative and does not save a changed schedule before user confirmation.",
+    "Trace reasoning fields contain one-sentence decision-basis summaries."
+  ]
+}

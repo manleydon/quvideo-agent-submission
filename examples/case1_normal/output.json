@@ -1,0 +1,13 @@
+{
+  "material_id": "M01",
+  "target_time": "2026-10-28T19:00:00",
+  "status": "success",
+  "audit_status": "passed",
+  "risk_level": "low",
+  "risk_reasons": [],
+  "suggested_time": "2026-10-28T19:00:00",
+  "needs_confirmation": false,
+  "confirmation_reasons": [],
+  "draft_saved": true,
+  "draft_id": "draft_001"
+}

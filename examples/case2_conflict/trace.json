@@ -1,0 +1,122 @@
+[
+  {
+    "step": 1,
+    "action": {
+      "tool_name": "get_material_info",
+      "params": {
+        "material_id": "M02"
+      },
+      "reasoning": "首先获取素材信息以了解内容详情"
+    },
+    "result": {
+      "success": true,
+      "data": {
+        "id": "M02",
+        "title": "产品更新通知",
+        "type": "video",
+        "duration_minutes": 2,
+        "content_preview": "新版本功能介绍视频",
+        "created_at": "2026-10-27T14:00:00Z"
+      },
+      "error": null
+    }
+  },
+  {
+    "step": 2,
+    "action": {
+      "tool_name": "check_audit_rules",
+      "params": {
+        "material_info": {
+          "id": "M02",
+          "title": "产品更新通知",
+          "type": "video",
+          "duration_minutes": 2,
+          "content_preview": "新版本功能介绍视频",
+          "created_at": "2026-10-27T14:00:00Z"
+        },
+        "target_time": "2026-10-28T18:00:00"
+      },
+      "reasoning": "检查素材是否符合审核规则"
+    },
+    "result": {
+      "passed": true,
+      "risk_level": "low",
+      "reasons": [],
+      "allowed_times": [
+        "12:00",
+        "18:00",
+        "20:00",
+        "22:00"
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "action": {
+      "tool_name": "check_duplicate_draft",
+      "params": {
+        "material_id": "M02",
+        "time_slot": "2026-10-28T18:00:00"
+      },
+      "reasoning": "检查是否已存在相同的排期草稿"
+    },
+    "result": {
+      "exists": false,
+      "draft_id": null
+    }
+  },
+  {
+    "step": 4,
+    "action": {
+      "tool_name": "query_time_slot",
+      "params": {
+        "time_slot": "2026-10-28T18:00:00"
+      },
+      "reasoning": "检查目标时段是否可用"
+    },
+    "result": {
+      "available": false,
+      "occupied_by": "M99",
+      "time": "2026-10-28T18:00:00"
+    }
+  },
+  {
+    "step": 5,
+    "action": {
+      "tool_name": "find_alternative_slots",
+      "params": {
+        "after_time": "2026-10-28T18:00:00",
+        "count": 3,
+        "allowed_times": [
+          "12:00",
+          "18:00",
+          "20:00",
+          "22:00"
+        ]
+      },
+      "reasoning": "目标时段已占用，查找替代方案"
+    },
+    "result": {
+      "success": true,
+      "slots": [
+        "2026-10-28T22:00:00"
+      ],
+      "nearest_available": "2026-10-28T22:00:00"
+    }
+  },
+  {
+    "step": 6,
+    "action": {
+      "tool_name": "FINISH",
+      "params": {
+        "status": "needs_confirmation",
+        "suggested_time": "2026-10-28T22:00:00"
+      },
+      "reasoning": "替代时段会改变用户要求，先请求确认，不保存草稿"
+    },
+    "result": {
+      "status": "needs_confirmation",
+      "suggested_time": "2026-10-28T22:00:00"
+    }
+  }
+]

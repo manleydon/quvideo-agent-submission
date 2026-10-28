@@ -1,0 +1,109 @@
+[
+  {
+    "step": 1,
+    "action": {
+      "tool_name": "get_material_info",
+      "params": {
+        "material_id": "M04"
+      },
+      "reasoning": "首先获取素材信息以了解内容详情"
+    },
+    "result": {
+      "success": true,
+      "data": {
+        "id": "M04",
+        "title": "正常图文素材",
+        "type": "image_text",
+        "content_preview": "健康生活小贴士",
+        "created_at": "2026-10-28T09:00:00Z"
+      },
+      "error": null
+    }
+  },
+  {
+    "step": 2,
+    "action": {
+      "tool_name": "check_audit_rules",
+      "params": {
+        "material_info": {
+          "id": "M04",
+          "title": "正常图文素材",
+          "type": "image_text",
+          "content_preview": "健康生活小贴士",
+          "created_at": "2026-10-28T09:00:00Z"
+        },
+        "target_time": "2026-10-28T22:00:00"
+      },
+      "reasoning": "检查素材是否符合审核规则"
+    },
+    "result": {
+      "passed": true,
+      "risk_level": "low",
+      "reasons": [],
+      "allowed_times": null
+    }
+  },
+  {
+    "step": 3,
+    "action": {
+      "tool_name": "check_duplicate_draft",
+      "params": {
+        "material_id": "M04",
+        "time_slot": "2026-10-28T22:00:00"
+      },
+      "reasoning": "检查是否已存在相同的排期草稿"
+    },
+    "result": {
+      "exists": false,
+      "draft_id": null
+    }
+  },
+  {
+    "step": 4,
+    "action": {
+      "tool_name": "query_time_slot",
+      "params": {
+        "time_slot": "2026-10-28T22:00:00"
+      },
+      "reasoning": "检查目标时段是否可用"
+    },
+    "result": {
+      "available": true,
+      "occupied_by": null,
+      "time": "2026-10-28T22:00:00"
+    }
+  },
+  {
+    "step": 5,
+    "action": {
+      "tool_name": "save_schedule_draft",
+      "params": {
+        "material_id": "M04",
+        "time_slot": "2026-10-28T22:00:00",
+        "notes": "测试保存失败场景",
+        "force_failure": true
+      },
+      "reasoning": "目标时段可用，保存排期草稿"
+    },
+    "result": {
+      "success": false,
+      "draft_id": null,
+      "error": "保存服务暂时不可用"
+    }
+  },
+  {
+    "step": 6,
+    "action": {
+      "tool_name": "FINISH",
+      "params": {
+        "status": "failed",
+        "reason": "保存服务暂时不可用"
+      },
+      "reasoning": "草稿保存失败"
+    },
+    "result": {
+      "status": "failed",
+      "reason": "保存服务暂时不可用"
+    }
+  }
+]

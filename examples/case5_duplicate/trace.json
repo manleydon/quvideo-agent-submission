@@ -1,0 +1,76 @@
+[
+  {
+    "step": 1,
+    "action": {
+      "tool_name": "get_material_info",
+      "params": {
+        "material_id": "M01"
+      },
+      "reasoning": "首先获取素材信息以了解内容详情"
+    },
+    "result": {
+      "success": true,
+      "data": {
+        "id": "M01",
+        "title": "周末活动预告",
+        "type": "image_text",
+        "content_preview": "本周末将举办线下见面会，欢迎参加",
+        "created_at": "2026-10-27T10:00:00Z"
+      },
+      "error": null
+    }
+  },
+  {
+    "step": 2,
+    "action": {
+      "tool_name": "check_audit_rules",
+      "params": {
+        "material_info": {
+          "id": "M01",
+          "title": "周末活动预告",
+          "type": "image_text",
+          "content_preview": "本周末将举办线下见面会，欢迎参加",
+          "created_at": "2026-10-27T10:00:00Z"
+        },
+        "target_time": "2026-10-28T19:00:00"
+      },
+      "reasoning": "检查素材是否符合审核规则"
+    },
+    "result": {
+      "passed": true,
+      "risk_level": "low",
+      "reasons": [],
+      "allowed_times": null
+    }
+  },
+  {
+    "step": 3,
+    "action": {
+      "tool_name": "check_duplicate_draft",
+      "params": {
+        "material_id": "M01",
+        "time_slot": "2026-10-28T19:00:00"
+      },
+      "reasoning": "检查是否已存在相同的排期草稿"
+    },
+    "result": {
+      "exists": true,
+      "draft_id": "draft_001"
+    }
+  },
+  {
+    "step": 4,
+    "action": {
+      "tool_name": "FINISH",
+      "params": {
+        "status": "duplicate",
+        "existing_draft_id": "draft_001"
+      },
+      "reasoning": "草稿已存在，避免重复保存"
+    },
+    "result": {
+      "status": "duplicate",
+      "existing_draft_id": "draft_001"
+    }
+  }
+]

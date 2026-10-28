@@ -1,0 +1,8 @@
+{
+  "material_id": "M04",
+  "target_time": "2026-10-28T22:00:00",
+  "user_notes": "测试保存失败场景",
+  "_mock_config": {
+    "force_save_failure": true
+  }
+}

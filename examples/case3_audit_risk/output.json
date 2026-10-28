@@ -1,0 +1,19 @@
+{
+  "material_id": "M03",
+  "target_time": "2026-10-28T21:00:00",
+  "status": "blocked",
+  "audit_status": "blocked",
+  "risk_level": "high",
+  "risk_reasons": [
+    "包含敏感词: 赌博, 枪支"
+  ],
+  "suggested_time": "2026-10-28T21:00:00",
+  "needs_confirmation": false,
+  "confirmation_reasons": [],
+  "draft_saved": false,
+  "draft_id": null,
+  "errors": [
+    "包含敏感词: 赌博, 枪支",
+    "审核未通过"
+  ]
+}

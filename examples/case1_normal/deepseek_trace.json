@@ -1,0 +1,108 @@
+[
+  {
+    "step": 1,
+    "action": {
+      "tool_name": "get_material_info",
+      "params": {
+        "material_id": "M01"
+      },
+      "reasoning": "当前素材信息为空，必须先获取素材完整信息才能进行后续审核与排期"
+    },
+    "result": {
+      "success": true,
+      "data": {
+        "id": "M01",
+        "title": "周末活动预告",
+        "type": "image_text",
+        "content_preview": "本周末将举办线下见面会，欢迎参加",
+        "created_at": "2026-10-27T10:00:00Z"
+      },
+      "error": null
+    }
+  },
+  {
+    "step": 2,
+    "action": {
+      "tool_name": "check_audit_rules",
+      "params": {
+        "material_info": {
+          "id": "M01",
+          "title": "周末活动预告",
+          "type": "image_text",
+          "content_preview": "本周末将举办线下见面会，欢迎参加",
+          "created_at": "2026-10-27T10:00:00Z"
+        },
+        "target_time": "2026-10-28T19:00:00"
+      },
+      "reasoning": "已获取素材信息，按照流程必须先检查素材完整性、审核规则及目标时段限制，审核通过后才能继续进行时段可用性查询与排期"
+    },
+    "result": {
+      "passed": true,
+      "risk_level": "low",
+      "reasons": [],
+      "allowed_times": null
+    }
+  },
+  {
+    "step": 3,
+    "action": {
+      "tool_name": "query_time_slot",
+      "params": {
+        "time_slot": "2026-10-28T19:00:00"
+      },
+      "reasoning": "素材审核已通过（低风险，无时段限制），下一步需查询目标发布时间 2026-10-28T19:00:00 是否可用，确认可用后再做重复草稿检查并保存排期草稿"
+    },
+    "result": {
+      "available": true,
+      "occupied_by": null,
+      "time": "2026-10-28T19:00:00"
+    }
+  },
+  {
+    "step": 4,
+    "action": {
+      "tool_name": "check_duplicate_draft",
+      "params": {
+        "material_id": "M01",
+        "time_slot": "2026-10-28T19:00:00"
+      },
+      "reasoning": "素材审核已通过且目标时段 2026-10-28T19:00:00 可用，按照保存前排期流程，需先检查该素材在该时段是否已存在重复草稿，确认无重复后再保存排期草稿"
+    },
+    "result": {
+      "exists": false,
+      "draft_id": null
+    }
+  },
+  {
+    "step": 5,
+    "action": {
+      "tool_name": "save_schedule_draft",
+      "params": {
+        "material_id": "M01",
+        "time_slot": "2026-10-28T19:00:00",
+        "notes": "希望在晚间黄金时段发布"
+      },
+      "reasoning": "素材信息完整、审核通过（低风险无时段限制）、目标时段 2026-10-28T19:00:00 可用且无重复草稿，所有前置检查均已通过，可以保存排期草稿（仅草稿，不执行真实发布）"
+    },
+    "result": {
+      "success": true,
+      "draft_id": "draft_001",
+      "error": null
+    }
+  },
+  {
+    "step": 6,
+    "action": {
+      "tool_name": "FINISH",
+      "params": {
+        "final_status": "success",
+        "summary": "素材 M01《周末活动预告》已完成审核（低风险、无时段限制）并成功保存排期草稿 draft_001，发布时间 2026-10-28T19:00:00（晚间黄金时段），目标时段可用且无重复草稿。仅保存草稿，未执行真实发布。"
+      },
+      "reasoning": "所有前置步骤均已完成：素材信息获取、审核规则检查通过、时段可用性确认、重复草稿检查无冲突、草稿保存成功（draft_001）"
+    },
+    "result": {
+      "final_status": "success",
+      "summary": "素材 M01《周末活动预告》已完成审核（低风险、无时段限制）并成功保存排期草稿 draft_001，发布时间 2026-10-28T19:00:00（晚间黄金时段），目标时段可用且无重复草稿。仅保存草稿，未执行真实发布。"
+    }
+  }
+]

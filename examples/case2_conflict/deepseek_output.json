@@ -1,0 +1,18 @@
+{
+  "material_id": "M02",
+  "target_time": "2026-10-28T18:00:00",
+  "status": "needs_confirmation",
+  "audit_status": "passed",
+  "risk_level": "low",
+  "risk_reasons": [],
+  "suggested_time": "2026-10-28T22:00:00",
+  "needs_confirmation": true,
+  "confirmation_reasons": [
+    "原定时段 2026-10-28T18:00:00 已被 M99 占用"
+  ],
+  "draft_saved": false,
+  "draft_id": null,
+  "errors": [
+    "原定时段 2026-10-28T18:00:00 被 M99 占用，合规替代时段为 2026-10-28T22:00:00，需用户确认后方可保存草稿"
+  ]
+}

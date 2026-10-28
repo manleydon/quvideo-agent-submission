@@ -1,0 +1,32 @@
+[
+  {
+    "step": 1,
+    "action": {
+      "tool_name": "get_material_info",
+      "params": {
+        "material_id": "M999"
+      },
+      "reasoning": "首先获取素材信息以了解内容详情"
+    },
+    "result": {
+      "success": false,
+      "data": null,
+      "error": "素材 M999 不存在"
+    }
+  },
+  {
+    "step": 2,
+    "action": {
+      "tool_name": "FINISH",
+      "params": {
+        "status": "failed",
+        "reason": "素材不存在"
+      },
+      "reasoning": "素材信息获取失败，无法继续"
+    },
+    "result": {
+      "status": "failed",
+      "reason": "素材不存在"
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "material_id": "M999",
+  "target_time": "2026-10-28T19:00:00",
+  "status": "failed",
+  "audit_status": "not_checked",
+  "suggested_time": "2026-10-28T19:00:00",
+  "needs_confirmation": false,
+  "confirmation_reasons": [],
+  "draft_saved": false,
+  "draft_id": null,
+  "errors": [
+    "素材 M999 不存在",
+    "素材不存在"
+  ]
+}

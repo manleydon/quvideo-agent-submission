@@ -1,0 +1,6 @@
+{
+  "material_id": "M01",
+  "target_time": "2026-10-28T19:00:00",
+  "user_notes": "重复提交测试（需先运行 case1）",
+  "_test_note": "此用例需要在 case1 成功保存草稿后再运行"
+}
